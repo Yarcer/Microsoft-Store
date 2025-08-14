@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+{{> headers }}
+
+<body class="min-h-screen flex flex-col bg-gray-100">
+
+    {{> navbar }}
+
+    <main class="flex-1 flex justify-center items-center px-4 py-10">
+        <div class="w-full md:w-2/3 lg:w-1/2 flex flex-col items-center gap-6">
+
+            <!-- Imagen de producto -->
+            <div class="w-full h-96 rounded-lg shadow-lg bg-cover bg-center relative flex items-end"
+                style="background-image: url('{{item.img}}');">
+            </div>
+
+            <!-- Título -->
+            <div class="w-full p-4 bg-white rounded-lg shadow-md">
+                <p class="text-2xl font-semibold mb-2">Título: <span class="text-lg font-normal">{{item.titulo}}</span>
+                </p>
+                <input type="text" placeholder="Nuevo título..." class="input input-primary w-full" />
+            </div>
+
+            <!-- URL -->
+            <div class="w-full p-4 bg-white rounded-lg shadow-md">
+                <p class="text-2xl font-semibold mb-2">URL: <span
+                        class="text-sm font-normal break-all">{{item.img}}</span></p>
+                <input type="text" placeholder="Nueva imagen por URL..." class="input input-primary w-full" />
+            </div>
+
+            <!-- Botones centrados -->
+            <div class="w-full p-4 bg-white rounded-lg shadow-md flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="history.back()" class="btn btn-outline btn-primary w-full sm:w-auto flex-1">Volver</button>
+                <button class="btn btn-outline btn-error w-full sm:w-auto flex-1">Borrar</button>
+                <button class="btn btn-outline btn-warning w-full sm:w-auto flex-1">Actualizar</button>
+            </div>
+
+        </div>
+    </main>
+
+    {{> footer }}
+
+</body>
+
+</html>

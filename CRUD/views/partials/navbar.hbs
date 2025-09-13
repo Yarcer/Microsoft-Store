@@ -1,9 +1,20 @@
 <div class="navbar bg-base-100 shadow-sm px-4 fixed z-50">
-    <!-- Logo a la izquierda -->
     <div class="flex-1">
         <a href="/" class="flex items-center">
-            <img src="https://store-images.s-microsoft.com/image/apps.62263.13634052595610511.c45457c9-b4af-46b0-8e61-8d7c0aec3f56.4a508410-9e70-413b-b7eb-7d7c1ae3828f?w=75"
+            <img src="https://store-images.s-microsoft.com/image...6b0-8e61-8d7c0aec3f56.4a508410-9e70-413b-b7eb-7d7c1ae3828f?w=75"
                 alt="Logo" class="h-12 w-12 object-contain" />
         </a>
     </div>
+    <div class="flex-none">
+      {{#if currentUser}}
+        <span>Hola, {{currentUser.name}}</span>
+        <form action="/logout" method="POST" style="display:inline;">
+          <button type="submit">Cerrar sesión</button>
+        </form>
+      {{else}}
+        <a href="/login">Iniciar sesión</a>
+      {{/if}}
+      <a href="/cart" style="margin-left:12px;">Carrito ({{cart.length}})</a>
+    </div>
 </div>
+<script src="/js/cart.js" defer></script>

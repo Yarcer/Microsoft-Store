@@ -1,1 +1,1 @@
-npm i -g pnpm && pnpm install && pnpm startgit add
+npm i -g pnpm && pnpm install && pnpm start

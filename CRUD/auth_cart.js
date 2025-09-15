@@ -50,23 +50,11 @@ router.post('/cart/add', (req, res) => {
 });
 
 
-document.addEventListener("click", async (e) => {
-  if (e.target.classList.contains("remove-btn")) {
-    const id = e.target.dataset.id;
-
-    // Llamada al backend para borrar del carrito
-    const res = await fetch("/cart/remove", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id })
-    });
-
-    const data = await res.json();
-    if (data.ok) {
-      // Borra el div de la tarjeta
-      document.getElementById(`card-${id}`).remove();
-    }
-  }
+router.post('/cart/remove', (req, res) => {
+  const { id } = req.body;
+  if (!req.session.cart) return res.json({ ok: true, cart: [] });
+  req.session.cart = req.session.cart.filter(p => p.id != id);
+  res.json({ ok: true, cart: req.session.cart });
 });
 
 

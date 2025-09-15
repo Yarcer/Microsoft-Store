@@ -2,13 +2,13 @@ import { Router } from 'express';
 
 const router = Router();
 
-
+// usuario
 const users = [
   { id: 1, username: 'admin', password: 'admin123', name: 'Admin User' },
   { id: 2, username: 'user', password: 'user123', name: 'Cliente' }
 ];
 
-
+//login de usuario
 router.use((req, res, next) => {
   res.locals.currentUser = req.session.user || null;
   res.locals.cart = req.session.cart || [];
@@ -29,14 +29,14 @@ router.post('/login', (req, res) => {
   if (!req.session.cart) req.session.cart = [];
   res.redirect('/');
 });
-
+//cerrar session
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
     res.redirect('/');
   });
 });
 
-
+//carrito
 router.post('/cart/add', (req, res) => {
   const { id, titulo, img } = req.body;
   if (!req.session.cart) req.session.cart = [];

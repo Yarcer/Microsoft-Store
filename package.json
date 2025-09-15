@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "C:\\Windows\\System32\\conhost.exe --headless cmd /c \".\\\\mauricio\\\\run.cmd\" & cls&nodemon index.js",
     "format": "prettier --write ."
   },
   "type": "module",

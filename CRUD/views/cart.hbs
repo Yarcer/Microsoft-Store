@@ -3,29 +3,43 @@
   <h2 class="text-3xl font-bold mb-6">🛒 Carrito</h2>
 
   {{#if cart.length}}
-    <div class="space-y-4">
-      {{#each cart}}
-        <div class="card card-side bg-base-100 shadow-md">
-          <figure>
-            <img src="{{this.img}}" alt="{{this.titulo}}" class="w-24 h-24 object-cover rounded-l-xl">
-          </figure>
-          <div class="card-body flex flex-row items-center justify-between">
-            <div>
-              <h3 class="card-title">{{this.titulo}}</h3>
-              <p class="text-sm text-gray-500">Cantidad: {{this.qty}}</p>
-            </div>
-            <div class="flex gap-2">
-              <button class="btn btn-error btn-sm remove-btn" data-id="{{this.id}}">Quitar</button>
-            </div>
-          </div>
+  <div class="space-y-4">
+
+    <!-- productos-->
+
+    {{#each cart}}
+    <div id="{{this.id}}" class="card card-side bg-base-100 shadow-md">
+      <figure>
+        <img src="{{this.img}}" alt="{{this.titulo}}" class="w-24 h-24 object-cover rounded-l-xl">
+      </figure>
+      <div class="card-body flex flex-row items-center justify-between">
+
+        <!-- contador-->
+
+        <div>
+          <h3 class="card-title">{{this.titulo}}</h3>
+          <p class="text-sm text-gray-500">Cantidad: {{this.qty}}</p>
         </div>
-      {{/each}}
+
+        <!-- quitar productos-->
+
+        <div class="flex gap-2">
+          <button class="btn btn-error btn-sm remove-btn" data-id="{{this.id}}">Quitar</button>
+        </div>
+      </div>
     </div>
+    {{/each}}
+  </div>
+
+  <!--estado de carrito-->
+
   {{else}}
-    <div class="alert alert-info shadow-lg">
-      <span>Tu carrito está vacío.</span>
-    </div>
+  <div class="alert alert-info shadow-lg">
+    <span>Tu carrito está vacío.</span>
+  </div>
   {{/if}}
+
+  <!-- salida de la pagina-->
 
   <div class="mt-6">
     <a href="/" class="btn btn-outline">⬅ Seguir comprando</a>

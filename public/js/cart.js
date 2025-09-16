@@ -1,3 +1,4 @@
+// alg
 document.addEventListener('click', function(e){
   if (e.target && e.target.matches('.add-to-cart')) {
     const btn = e.target;

@@ -12,6 +12,7 @@ server.use(methodOverride('_method'));
 
 // Static files
 server.use(express.static(path.join(__HOME__, 'public')));
+server.use('/logo', express.static(path.join(__HOME__, 'logo')));
 
 // Session (simple in-memory for demo)
 server.use(session({

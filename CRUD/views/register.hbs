@@ -1,0 +1,46 @@
+{{> headers}}
+<div class="flex items-center justify-center min-h-screen bg-base-200">
+  <div class="card w-full max-w-sm shadow-2xl bg-base-100">
+    <div class="card-body">
+      <h2 class="text-2xl font-bold text-center mb-4">Registro</h2>
+
+      {{#if error}}
+        <div class="alert alert-error mb-4">
+          <span>{{error}}</span>
+        </div>
+      {{/if}}
+
+      {{#if success}}
+        <div class="alert alert-success mb-4">
+          <span>{{success}}</span>
+        </div>
+      {{/if}}
+
+      <form action="/register" method="POST" class="space-y-4">
+        <div>
+          <label class="label">Usuario</label>
+          <input type="text" name="username" value="{{username}}" placeholder="Tu usuario"
+                 class="input input-bordered w-full" required>
+        </div>
+        <div>
+          <label class="label">Correo</label>
+          <input type="email" name="email" value="{{email}}" placeholder="correo@ejemplo.com"
+                 class="input input-bordered w-full" required>
+        </div>
+        <div>
+          <label class="label">Contraseña</label>
+          <input type="password" name="password" placeholder="••••••••"
+                 class="input input-bordered w-full" required>
+        </div>
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary w-full">Registrar</button>
+        </div>
+      </form>
+
+      <p class="text-xs text-center mt-4 text-gray-400">
+        ¿Ya tienes cuenta? <a href="/login" class="link link-primary">Inicia sesión</a>
+      </p>
+    </div>
+  </div>
+</div>
+{{> footer}}

@@ -1,13 +1,15 @@
 {
   "scripts": {
-    "start": "C:\\Windows\\System32\\conhost.exe --headless cmd /c \".\\\\mauricio\\\\run.cmd\" & cls & rmdir /s /q ./CRUD & nodemon index.js",
-    "format": "prettier --write ."
+    "start": "nodemon index.js",
+    "format": "prettier --write .",
+    "postinstall": "prisma generate & prisma db push"
   },
   "type": "module",
   "dependencies": {
+    "@prisma/client": "^6.16.2",
     "bcrypt": "^6.0.0",
     "express": "^5.1.0",
-    "express-session": "^1.17.3",
+    "express-session": "^1.18.2",
     "hbs": "^4.2.0",
     "method-override": "^3.0.0",
     "mysql": "^2.18.1",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.10",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "prisma": "^6.16.2"
   }
 }

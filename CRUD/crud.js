@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { test_data } from '../configuracion/data.js';
+import { prisma } from '../configuracion/config.js';
 
 const app = Router();
 
@@ -68,5 +69,11 @@ app.post('/producto/borrar/:id', (req, res) => {
   test_data.splice(index, 1);
   res.redirect('/');
 });
+
+
+app.get("/live", async (req, res) => {
+  const a = await prisma.usuario.count();
+  res.send(a)
+})
 
 export { app };

@@ -8,9 +8,11 @@ document.addEventListener('click', function (e) {
     fetch('/cart/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: id, titulo: titulo, img: img })
+      body: JSON.stringify({ id: id, titulo: titulo, img: img }),
     })
-      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        return r.json();
+      })
       .then(function (data) {
         if (data.ok) {
           alert('Agregado al carrito');
@@ -42,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('/cart/remove', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: id })
+      body: JSON.stringify({ id: id }),
     })
       .then(function (res) {
         if (!res.ok) throw new Error('Error al borrar en el servidor');
@@ -58,9 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
           var container = document.querySelector('.space-y-4');
           if (container) {
             container.outerHTML =
-              '<div class="alert alert-info shadow-lg">' +
-              '<span>Tu carrito está vacío.</span>' +
-              '</div>';
+              '<div class="alert alert-info shadow-lg">' + '<span>Tu carrito está vacío.</span>' + '</div>';
           }
         }
       })

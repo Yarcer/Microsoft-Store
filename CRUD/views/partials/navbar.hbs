@@ -1,20 +1,27 @@
 <div class="navbar bg-base-100 shadow-sm px-4 fixed z-50">
-    <div class="flex-1">
+  <div class="flex-1">
     <a href="/" class="flex items-center">
-      <img src="/logo/rigby.png"
-        class="h-12 w-12 object-contain" alt="Logo" />
+      <img src="/logo/rigby.png" class="h-12 w-12 object-contain" alt="Logo" />
     </a>
-    </div>
-    <div class="flex-none">
-      {{#if currentUser}}
-        <span>Hola, {{currentUser.name}}</span>
-        <form action="/logout" method="POST" style="display:inline;">
-          <button type="submit">Cerrar sesión</button>
-        </form>
-      {{else}}
-        <a href="/login">Iniciar sesión</a>
-      {{/if}}
-      <a href="/cart" style="margin-left:12px;">Carrito ({{cart.length}})</a>
-    </div>
+  </div>
+  <div class="flex-none">
+    {{#if currentUser}}
+    <span>Hola, {{currentUser.name}}</span>
+    <form action="/logout" method="POST" style="display:inline;">
+      <button type="submit">Cerrar sesión</button>
+    </form>
+    {{else}}
+    <a class="box hover:text-white hover:border-green-600 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 transition duration-300 ease-in-out border-y-0 border-l-2 border-r-2 border-gray-400 px-4 py-2"
+      href="/login"
+      style="--tw-bg-opacity:1;transition-property:background-color;display:inline-block;margin-right:-2px;"
+      onmouseover="this.style.backgroundColor='oklch(60.6% 0.25 292.717)'"
+      onmouseout="this.style.backgroundColor=''">Iniciar sesión</a>
+    {{/if}}
+    <a class="box hover:text-white hover:border-green-600 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 transition duration-300 ease-in-out border-y-0 border-l-2 border-r-2 border-gray-400 px-4 py-2"
+      href="/cart"
+      style="--tw-bg-opacity:1;transition-property:background-color;display:inline-block;margin-right:-2px;"
+      onmouseover="this.style.backgroundColor='oklch(60.6% 0.25 292.717)'"
+      onmouseout="this.style.backgroundColor=''">Carrito ({{cart.length}})</a>
+  </div>
 </div>
 <script src="/js/cart.js" defer></script>

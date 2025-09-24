@@ -8,6 +8,7 @@ const router = Router();
 router.use((req, res, next) => {
   res.locals.currentUser = req.session.user || null;
   res.locals.cart = req.session.cart || [];
+  res.locals.cart.length = res.locals.cart.reduce((acc, item) => acc + (item.qty || 1), 0);
   next();
 });
 

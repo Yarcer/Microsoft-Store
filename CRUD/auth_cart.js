@@ -13,17 +13,39 @@ router.use((req, res, next) => {
 
 // ====== LOGIN ======
 router.get('/login', (req, res) => {
+  if (req.session.usuario) {
+    return res.redirect('/');
+  }
   res.render('login');
 });
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
+  if (!username || !password) {
+    return res.render('login', { error: 'Todos los campos son obligatorios.' });
+  }
+
   try {
-    return res.render('login', { error: 'login deshabilitada' });
+    const usuario = await prisma.usuario.findUnique({
+      where: { username }
+    });
+
+    if (!usuario) {
+      return res.render('login', { error: 'Usuario o contraseña incorrectos.' });
+    }
+
+    const passwordValida = await bcrypt.compare(password, usuario.password);
+
+    if (!passwordValida) {
+      return res.render('login', { error: 'Usuario o contraseña incorrectos.' });
+    }
+    req.session.usuario = { id: usuario.id, username: usuario.username };
+    res.redirect('/');
+
   } catch (err) {
     console.error(err);
-    res.render('login', { error: 'Error interno.' });
+    res.render('login', { error: 'Error interno del servidor.' });
   }
 });
 

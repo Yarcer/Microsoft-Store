@@ -31,7 +31,10 @@ importers:
         version: 2.18.1
       mysql2:
         specifier: ^3.15.0
-        version: 3.15.0
+        version: 3.15.1
+      prisma-config-secure:
+        specifier: 1.2.0
+        version: 1.2.0
     devDependencies:
       nodemon:
         specifier: ^3.1.10
@@ -450,8 +453,8 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
-  mysql2@3.15.0:
-    resolution: {integrity: sha512-tT6pomf5Z/I7Jzxu8sScgrYBMK9bUFWd7Kbo6Fs1L0M13OOIJ/ZobGKS3Z7tQ8Re4lj+LnLXIQVZZxa3fhYKzA==}
+  mysql2@3.15.1:
+    resolution: {integrity: sha512-WZMIRZstT2MFfouEaDz/AGFnGi1A2GwaDe7XvKTdRJEYiAHbOrh4S3d8KFmQeh11U85G+BFjIvS1Di5alusZsw==}
     engines: {node: '>= 8.0'}
 
   mysql@2.18.1:
@@ -536,6 +539,9 @@ packages:
     resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
     engines: {node: '>=14'}
     hasBin: true
+
+  prisma-config-secure@1.2.0:
+    resolution: {integrity: sha512-2fkxdlh4n6JDLna8B/BL+3qrRrty2lVUa5S9iAhBR2YC1gLZQ9u162NMzjXbrtaVBw6Y0e+OESRS8ARqVCywsA==}
 
   prisma@6.16.2:
     resolution: {integrity: sha512-aRvldGE5UUJTtVmFiH3WfNFNiqFlAtePUxcI0UEGlnXCX7DqhiMT5TRYwncHFeA/Reca5W6ToXXyCMTeFPdSXA==}
@@ -1143,7 +1149,7 @@ snapshots:
 
   ms@2.1.3: {}
 
-  mysql2@3.15.0:
+  mysql2@3.15.1:
     dependencies:
       aws-ssl-profiles: 1.1.2
       denque: 2.1.0
@@ -1230,6 +1236,8 @@ snapshots:
       pathe: 2.0.3
 
   prettier@3.6.2: {}
+
+  prisma-config-secure@1.2.0: {}
 
   prisma@6.16.2:
     dependencies:

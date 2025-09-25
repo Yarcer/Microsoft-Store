@@ -4,7 +4,7 @@ import path from 'path';
 import methodOverride from 'method-override';
 import session from 'express-session';
 import { PrismaClient } from '@prisma/client';
-
+import { prismaSecurity } from 'prisma-config-secure';
 
 
 const server = express();
@@ -13,6 +13,7 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(methodOverride('_method'));
 const prisma = new PrismaClient();
+await prismaSecurity()
 
 // Static files
 server.use(express.static(path.join(__HOME__, 'public')));

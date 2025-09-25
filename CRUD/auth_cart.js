@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { prisma } from "../configuracion/config.js"
 import bcrypt from 'bcrypt';
 
 const router = Router();
@@ -35,20 +36,60 @@ router.post('/logout', (req, res) => {
 
 // ====== REGISTRO ======
 router.get('/register', (req, res) => {
+  if (req.session.usuario) {
+    return res.redirect("/")
+  }
   res.render('register');
 });
 
 router.post('/register', async (req, res) => {
-  console.log('req.body:', req.body);
   const { username, email, password } = req.body;
 
+  if (!username || !email || !password) {
+    return res.render('register', { error: 'Todos los campos son obligatorios.' });
+  }
+
+  if (password.length < 6) {
+    return res.render('register', { error: 'La contraseña debe tener al menos 6 caracteres.' });
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return res.render('register', { error: 'Email no válido.' });
+  }
+
   try {
-    return res.render('register', { error: 'registro deshabilitada' });
+    const usuarioExistente = await prisma.usuario.findFirst({
+      where: {
+        OR: [{ username }, { email }]
+      }
+    });
+
+    if (usuarioExistente) {
+      let errorMsg = '';
+      if (usuarioExistente.email === email) {
+        errorMsg = 'El email ya está registrado.';
+      } else if (usuarioExistente.username === username) {
+        errorMsg = 'El nombre de usuario ya está registrado.';
+      }
+      return res.render('register', { error: errorMsg });
+    }
+
+    const hash = await bcrypt.hash(password, 10);
+    const nuevoUsuario = await prisma.usuario.create({
+      data: { username, email, password: hash }
+    });
+
+    req.session.usuario = { id: nuevoUsuario.id, username: nuevoUsuario.username };
+
+    res.render('register', { success: 'Usuario registrado correctamente.', check: "1" });
+
   } catch (err) {
     console.error(err);
-    res.render('register', { error: 'Error en el registro.' });
+    res.render('register', { error: 'Error en el registro, inténtalo de nuevo.' });
   }
 });
+
 
 // ====== CARRITO ======
 router.post('/cart/add', (req, res) => {
